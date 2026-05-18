@@ -1,3 +1,7 @@
+mod commands;
+mod db;
+
+use db::Database;
 use tauri::{Listener, Manager};
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
@@ -8,6 +12,13 @@ pub fn run() {
                 .build(),
         )
         .setup(|app| {
+            let data_dir = app
+                .path()
+                .app_data_dir()
+                .map_err(|e| e.to_string())?;
+            let db_path = data_dir.join("linktray.db");
+            let database = Database::open(&db_path)?;
+            app.manage(database);
             let handle = app.handle().clone();
 
             handle.listen("tray-show-main", {
@@ -42,6 +53,12 @@ pub fn run() {
 
             Ok(())
         })
+        .invoke_handler(tauri::generate_handler![
+            commands::save_link,
+            commands::get_links,
+            commands::search_links,
+            commands::delete_link,
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

@@ -1,0 +1,4 @@
+[[permission]]
+identifier = "allow-database"
+description = "Enables local SQLite link storage commands."
+commands.allow = ["save_link", "get_links", "search_links", "delete_link"]
