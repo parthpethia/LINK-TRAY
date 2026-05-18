@@ -4,7 +4,9 @@ import { setupTray } from "@/lib/tray";
 
 export function useAppInit(): void {
   useEffect(() => {
-    void setupTray();
-    void setupGlobalShortcuts();
+    void (async () => {
+      await setupTray();
+      await setupGlobalShortcuts();
+    })();
   }, []);
 }

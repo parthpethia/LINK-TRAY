@@ -1,12 +1,22 @@
+import { Page } from "@/components/layout/Page";
+import { Heading } from "@/components/ui/Heading";
+import { Text } from "@/components/ui/Text";
+
 export function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center px-6">
-      <h1 className="text-3xl font-semibold tracking-tight text-zinc-50">
-        Link Tray
-      </h1>
-      <p className="mt-3 max-w-sm text-center text-sm text-zinc-400">
-        Your links, one tray away.
-      </p>
-    </main>
+    <Page>
+      <div className="flex flex-col items-center text-center">
+        <span
+          className="mb-6 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-surface-raised text-sm font-semibold text-accent ring-1 ring-zinc-800/60 dark:ring-zinc-700/60"
+          aria-hidden
+        >
+          LT
+        </span>
+        <Heading>Link Tray</Heading>
+        <Text variant="muted" className="mt-3 max-w-xs">
+          Your links, one tray away.
+        </Text>
+      </div>
+    </Page>
   );
 }
