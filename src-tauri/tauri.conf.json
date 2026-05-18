@@ -14,10 +14,15 @@
       {
         "label": "main",
         "title": "Link Tray",
-        "width": 480,
-        "height": 360,
-        "resizable": true,
-        "center": true
+        "width": 640,
+        "height": 120,
+        "resizable": false,
+        "center": true,
+        "decorations": false,
+        "transparent": true,
+        "alwaysOnTop": true,
+        "skipTaskbar": true,
+        "visible": false
       }
     ],
     "security": {

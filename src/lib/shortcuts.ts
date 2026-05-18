@@ -1,10 +1,11 @@
+import { toggleMainWindow } from "@/lib/mainWindow";
 import { inTauriRuntime } from "@/lib/tauri";
 
 /**
  * Flip to `true` when global shortcuts are defined.
  * @see https://v2.tauri.app/plugin/global-shortcut/
  */
-export const GLOBAL_SHORTCUTS_ENABLED = false;
+export const GLOBAL_SHORTCUTS_ENABLED = true;
 
 export type ShortcutDefinition = {
   accelerator: string;
@@ -13,12 +14,12 @@ export type ShortcutDefinition = {
 
 /** Register shortcuts here, then set GLOBAL_SHORTCUTS_ENABLED to true. */
 export const SHORTCUTS: ShortcutDefinition[] = [
-  // {
-  //   accelerator: "Ctrl+Shift+L",
-  //   onTrigger: () => {
-  //     /* e.g. show/focus main window */
-  //   },
-  // },
+  {
+    accelerator: "Alt+Space",
+    onTrigger: () => {
+      void toggleMainWindow();
+    },
+  },
 ];
 
 export async function setupGlobalShortcuts(): Promise<void> {

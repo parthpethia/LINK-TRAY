@@ -14,6 +14,7 @@ pub fn run() {
                 let handle = handle.clone();
                 move |_event| {
                     if let Some(window) = handle.get_webview_window("main") {
+                        let _ = window.center();
                         let _ = window.show();
                         let _ = window.unminimize();
                         let _ = window.set_focus();
@@ -29,6 +30,8 @@ pub fn run() {
             });
 
             if let Some(window) = app.get_webview_window("main") {
+                let _ = window.hide();
+
                 window.clone().on_window_event(move |event| {
                     if let tauri::WindowEvent::CloseRequested { api, .. } = event {
                         api.prevent_close();

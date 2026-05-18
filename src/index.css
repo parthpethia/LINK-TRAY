@@ -32,4 +32,10 @@
     color: rgb(var(--ink));
     @apply font-sans antialiased;
   }
+
+  html.spotlight,
+  html.spotlight body,
+  html.spotlight #root {
+    background: transparent;
+  }
 }
