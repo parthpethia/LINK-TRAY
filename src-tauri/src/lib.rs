@@ -1,7 +1,9 @@
+mod api;
 mod commands;
 mod db;
 
 use db::Database;
+use std::sync::Arc;
 use tauri::{Listener, Manager};
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
@@ -18,7 +20,8 @@ pub fn run() {
                 .app_data_dir()
                 .map_err(|e| e.to_string())?;
             let db_path = data_dir.join("linktray.db");
-            let database = Database::open(&db_path)?;
+            let database = Arc::new(Database::open(&db_path)?);
+            api::start_local_api(Arc::clone(&database));
             app.manage(database);
             let handle = app.handle().clone();
 

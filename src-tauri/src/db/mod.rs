@@ -1,11 +1,13 @@
 mod links;
 mod migrate;
+mod validate;
 
 use rusqlite::Connection;
 use std::path::Path;
 use std::sync::Mutex;
 
 pub use links::{Link, LinkInput};
+pub use validate::{normalize_link_input, validate_link_input};
 
 pub struct Database {
     conn: Mutex<Connection>,
