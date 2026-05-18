@@ -11,6 +11,7 @@ pub fn run() {
             tauri_plugin_global_shortcut::Builder::new()
                 .build(),
         )
+        .plugin(tauri_plugin_opener::init())
         .setup(|app| {
             let data_dir = app
                 .path()

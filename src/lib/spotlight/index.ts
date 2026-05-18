@@ -1,0 +1,1 @@
+export { openLinkInBrowser } from "./openLink";
